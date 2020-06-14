@@ -1,4 +1,4 @@
-# prognet22
+# Praktikum Pemrograman Internet
 
 Kelompok 22
 1.  A.A Gede Agung Surya Pratama 	(1504505083)
