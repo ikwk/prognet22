@@ -152,22 +152,23 @@
 							@if($disc!=0)
 								<div style="background-color:red;"class="product_extra product_new"><a href="categories.html">-{{$disc}}%</a></div>
 							@endif
-								<div class="product_content">
-									<div class="product_title"><a href="/product/{{$products->id}}">{{$products->product_name}}</a></div>
-									<span class="badge badge-primary mb-2">Rating: {{$products->product_rate}} <i class="fa fa-star"></i></span>
-									@if ($products->stock == 0)
-									<span class="badge badge-danger mb-2">Out Of Stock!</span>
-									@endif	
-										@php
-											$home = new Home;
-                            				$harga = $home->diskon($products->discount,$products->price);
-										@endphp
-										@if ($harga != 0)	   
-											<div style="text-decoration:line-through;" class="product_price">Rp.{{number_format($products->price)}}</div>
-											<div style="font-weight:bold;color:black;" class="product_price">Rp.{{number_format($harga)}}</div>
-										@else
-											<div class="product_price">Rp.{{number_format($products->price)}}</div>
-										@endif
+							<div class="product_content">
+							<div class="product_title"><a href="/product/{{$products->id}}">{{$products->product_name}}</a></div>
+							<span class="badge badge-primary mb-2">Rating: {{$products->product_rate}} <i class="fa fa-star"></i></span>
+							<ul class="rating">
+							@for ($i = 0; $i < $products->product_rate; $i++)
+							<li>
+							<i class="fas fa-star blue-text"></i>
+							</li>
+							@endfor
+							@if($products->product_rate < 5)
+							@for ($i = 0; $i < 5 - $products->product_rate; $i++)
+							<li>
+							<i class="fas fa-star grey-text"></i>
+							</li>
+							@endfor
+							@endif
+							</ul>
 								</div>
 						</div>
 						@endforeach
